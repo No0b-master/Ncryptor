@@ -1,0 +1,25 @@
+{
+  "name": "ncryptor",
+  "version": "1.0.0",
+  "description": "A Password Hashing Tool which encrypt and decrypt password based on a Quantum-Resistant Adaptive Memory-Hard Function (QR-AMHF) Alogorithn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/No0b-master/Ncryptor.git"
+  },
+  "keywords": [
+    "Password",
+    "encryption",
+    "decryption",
+    "cryptography"
+  ],
+  "author": "Mohd Ahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No0b-master/Ncryptor/issues"
+  },
+  "homepage": "https://github.com/No0b-master/Ncryptor#readme"
+}
