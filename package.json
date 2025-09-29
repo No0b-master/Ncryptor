@@ -1,8 +1,8 @@
 {
   "name": "ncryptor",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Password Hashing Tool which encrypt and decrypt password based on a Quantum-Resistant Adaptive Memory-Hard Function (QR-AMHF) Alogorithn",
-  "main": "index.js",
+  "main": "ncryptor.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
