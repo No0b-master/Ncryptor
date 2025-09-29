@@ -36,7 +36,9 @@ Ncryptor is a revolutionary password hashing algorithm designed to surpass exist
 - **Memory Limits**: Configurable maximum memory usage
 
 ## 📦 Installation
+  
 
+  
 ```bash
 npm install ncryptor
 ```
