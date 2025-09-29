@@ -1,6 +1,6 @@
 {
   "name": "ncryptor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Password Hashing Tool which encrypt and decrypt password based on a Quantum-Resistant Adaptive Memory-Hard Function (QR-AMHF) Alogorithn",
   "main": "ncryptor.js",
   "scripts": {
