@@ -1,12 +1,12 @@
-# Ncrypt
+# Ncryptor
 
 <div align="center">
 
 **A novel password hashing algorithm combining quantum-inspired wave transformations, fractal mathematics, and temporal entropy.**
 
-[![npm version](https://img.shields.io/npm/v/ncrypt.svg)](https://www.npmjs.com/package/ncrypt)
+[![npm version](https://img.shields.io/npm/v/ncryptor.svg)](https://www.npmjs.com/package/ncryptor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/node/v/ncrypt.svg)](https://nodejs.org)
+[![Node.js Version](https://img.shields.io/node/v/Ncryptor.svg)](https://nodejs.org)
 
 </div>
 
@@ -25,15 +25,15 @@
 ## 📦 Installation
 
 ```bash
-npm install ncrypt
+npm install ncryptor
 ```
 
 ```bash
-yarn add ncrypt
+yarn add ncryptor
 ```
 
 ```bash
-pnpm add ncrypt
+pnpm add ncryptor
 ```
 
 ## 🔧 Usage
@@ -41,45 +41,45 @@ pnpm add ncrypt
 ### Basic Example
 
 ```javascript
-import { Ncrypt } from 'ncrypt';
+import { Ncryptor } from 'ncryptor';
 
-const ncrypt = new Ncrypt();
+const ncryptor = new Ncryptor();
 
 // Hash a password
-const hash = ncrypt.hash('mySecurePassword123!');
+const hash = ncryptor.hash('mySecurePassword123!');
 console.log('Hash:', hash);
 
 // Verify password
-const isValid = ncrypt.compare('mySecurePassword123!', hash);
+const isValid = ncryptor.compare('mySecurePassword123!', hash);
 console.log('Valid:', isValid); // true
 
-const isInvalid = ncrypt.compare('wrongPassword', hash);
+const isInvalid = ncryptor.compare('wrongPassword', hash);
 console.log('Invalid:', isInvalid); // false
 ```
 
 ### CommonJS
 
 ```javascript
-const { Ncrypt } = require('ncrypt');
+const { Ncryptor } = require('ncryptor');
 
-const ncrypt = new Ncrypt();
-const hash = ncrypt.hash('password123');
+const ncryptor = new Ncryptor();
+const hash = ncryptor.hash('password123');
 ```
 
 ### With Express.js
 
 ```javascript
 import express from 'express';
-import { Ncrypt } from 'ncrypt';
+import { Ncryptor } from 'ncryptor';
 
 const app = express();
-const ncrypt = new Ncrypt();
+const ncryptor = new Ncryptor();
 
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
   
   // Hash the password
-  const hashedPassword = ncrypt.hash(password);
+  const hashedPassword = ncryptor.hash(password);
   
   // Save to database
   await db.users.create({ username, password: hashedPassword });
@@ -93,7 +93,7 @@ app.post('/login', async (req, res) => {
   const user = await db.users.findOne({ username });
   
   // Verify password
-  if (ncrypt.compare(password, user.password)) {
+  if (ncryptor.compare(password, user.password)) {
     res.json({ success: true, token: generateToken(user) });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
@@ -106,7 +106,7 @@ app.post('/login', async (req, res) => {
 ### Constructor
 
 ```javascript
-const ncrypt = new Ncrypt(options);
+const ncryptor = new Ncryptor(options);
 ```
 
 **Options:**
@@ -120,7 +120,7 @@ const ncrypt = new Ncrypt(options);
 **Example:**
 
 ```javascript
-const ncrypt = new Ncrypt({
+const ncryptor = new Ncryptor({
   waveDepth: 10,        // More secure, slower
   dimensionCount: 7,
   fractalIterations: 6
@@ -142,7 +142,7 @@ Generates a secure hash of the password.
 **Example:**
 
 ```javascript
-const hash = ncrypt.hash('myPassword123');
+const hash = ncryptor.hash('myPassword123');
 // Returns: "AQABkZ3X9Y2a8b...=" (73 bytes encoded)
 ```
 
@@ -160,7 +160,7 @@ Verifies a password against a hash.
 **Example:**
 
 ```javascript
-const isValid = ncrypt.compare('myPassword123', hash);
+const isValid = ncryptor.compare('myPassword123', hash);
 if (isValid) {
   console.log('Password correct!');
 }
@@ -168,7 +168,7 @@ if (isValid) {
 
 ## 🔬 How It Works
 
-Ncrypt uses a unique multi-stage algorithm that differs fundamentally from traditional hashing methods:
+Ncryptor uses a unique multi-stage algorithm that differs fundamentally from traditional hashing methods:
 
 ### 1. **Temporal Salt Generation**
 - Uses microsecond-precision timestamps (`process.hrtime()`)
@@ -202,7 +202,7 @@ Ncrypt uses a unique multi-stage algorithm that differs fundamentally from tradi
 
 ## 🆚 Comparison with Other Algorithms
 
-| Feature | Ncrypt | bcrypt | Argon2 | scrypt |
+| Feature | Ncryptor | bcrypt | Argon2 | scrypt |
 |---------|--------|--------|--------|--------|
 | **Salt Management** | Automatic (temporal) | Manual | Manual | Manual |
 | **Algorithm Type** | Wave/Fractal | Blowfish-based | Memory-hard | Memory-hard |
@@ -211,7 +211,7 @@ Ncrypt uses a unique multi-stage algorithm that differs fundamentally from tradi
 | **Unique Approach** | ✅ Quantum-inspired | ❌ Traditional | ❌ Traditional | ❌ Traditional |
 | **Auto Timestamp** | ✅ Yes | ❌ No | ❌ No | ❌ No |
 
-### Why Choose Ncrypt?
+### Why Choose Ncryptor?
 
 ✅ **Simplicity** - No salt management headaches  
 ✅ **Innovation** - Novel algorithm resistant to rainbow tables  
@@ -230,17 +230,17 @@ Ncrypt uses a unique multi-stage algorithm that differs fundamentally from tradi
 
 ```javascript
 // ✅ Good - Use default settings for most applications
-const ncrypt = new Ncrypt();
+const ncryptor = new Ncryptor();
 
 // ✅ Good - Increase security for sensitive applications
-const ncryptSecure = new Ncrypt({
+const ncryptorSecure = new Ncryptor({
   waveDepth: 12,
   dimensionCount: 8,
   fractalIterations: 6
 });
 
 // ❌ Bad - Don't use weak passwords
-const hash = ncrypt.hash('123456'); // Still hashes, but weak password
+const hash = ncryptor.hash('123456'); // Still hashes, but weak password
 
 // ✅ Good - Enforce password strength in your application
 function isStrongPassword(password) {
@@ -274,15 +274,15 @@ npm test
 ## 📝 Error Handling
 
 ```javascript
-import { Ncrypt, NcryptError } from 'ncrypt';
+import { Ncryptor, NcryptorError } from 'ncryptor';
 
-const ncrypt = new Ncrypt();
+const ncryptor = new Ncryptor();
 
 try {
-  const hash = ncrypt.hash(''); // Empty password
+  const hash = ncryptor.hash(''); // Empty password
 } catch (error) {
-  if (error instanceof NcryptError) {
-    console.error('Ncrypt Error:', error.message);
+  if (error instanceof NcryptorError) {
+    console.error('Ncryptor Error:', error.message);
     console.error('Error Code:', error.code);
   }
 }
@@ -325,9 +325,9 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## ⚠️ Disclaimer
 
-While Ncrypt uses novel approaches and combines multiple security layers, it is a new algorithm and has not undergone extensive cryptographic analysis. For production systems handling highly sensitive data, consider using well-established algorithms like Argon2 or bcrypt that have been thoroughly vetted by the cryptographic community.
+While Ncryptor uses novel approaches and combines multiple security layers, it is a new algorithm and has not undergone extensive cryptographic analysis. For production systems handling highly sensitive data, consider using well-established algorithms like Argon2 or bcrypt that have been thoroughly vetted by the cryptographic community.
 
-That said, Ncrypt provides strong security through its unique multi-layered approach and is suitable for most applications requiring password hashing.
+That said, Ncryptor provides strong security through its unique multi-layered approach and is suitable for most applications requiring password hashing.
 
 ---
 

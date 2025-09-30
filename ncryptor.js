@@ -1,15 +1,15 @@
-// Ncrypt.js - Novel hashing algorithm with temporal entropy
+// Ncryptor.js - Novel hashing algorithm with temporal entropy
 const crypto = require('crypto');
 
-class NcryptError extends Error {
+class NcryptorError extends Error {
     constructor(message, code) {
         super(message);
-        this.name = 'NcryptError';
+        this.name = 'NcryptorError';
         this.code = code;
     }
 }
 
-class Ncrypt {
+class Ncryptor {
     constructor(options = {}) {
         this.version = 1;
         this.waveDepth = options.waveDepth || 7;
@@ -30,11 +30,11 @@ class Ncrypt {
      */
     hash(password) {
         if (typeof password !== 'string' || password.length === 0) {
-            throw new NcryptError('Password must be a non-empty string', 'INVALID_INPUT');
+            throw new NcryptorError('Password must be a non-empty string', 'INVALID_INPUT');
         }
 
         if (password.length > 1024) {
-            throw new NcryptError('Password too long (max 1024 chars)', 'PASSWORD_TOO_LONG');
+            throw new NcryptorError('Password too long (max 1024 chars)', 'PASSWORD_TOO_LONG');
         }
 
         const microTime = this.getMicrosecondTimestamp();
@@ -70,7 +70,7 @@ class Ncrypt {
 
             const version = decoded[0];
             if (version !== this.version) {
-                throw new NcryptError('Unsupported hash version', 'VERSION_MISMATCH');
+                throw new NcryptorError('Unsupported hash version', 'VERSION_MISMATCH');
             }
 
             const microTimeHex = decoded.subarray(1, 9).toString('hex');
@@ -309,4 +309,4 @@ class Ncrypt {
 
 
 
-module.exports = { Ncrypt, NcryptError };
+module.exports = { Ncryptor, NcryptorError };

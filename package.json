@@ -1,6 +1,6 @@
 {
   "name": "ncryptor",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Password Hashing Tool which encrypt and decrypt password based new hashing algorithm called QuantumWave that uses a unique approach combining temporal entropy, fractal mixing, and multi-dimensional state transformations",
   "main": "ncryptor.js",
   "scripts": {
